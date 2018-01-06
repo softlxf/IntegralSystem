@@ -1350,7 +1350,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panelMembers;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.DataGridView dataGridViewGoodsList;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Timer timerTime;

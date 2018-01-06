@@ -52,6 +52,8 @@ namespace IntegralSystem
             conn = new SQLiteConnection("Data Source=IntegralSystem.db");
             conn.SetPassword("SystemIntegral");
             conn.Open();
+            //conn.ChangePassword("");
+            //conn.Close();
         }
 
         public static DbHelper Instance
