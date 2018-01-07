@@ -460,7 +460,7 @@ namespace IntegralSystem
             }
             if (needBonus > currVip.bonus)
             {
-                MessageBox.Show("你选择的兑换商品所需积分超出会员当前所拥有的总积分", "积分兑换", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("当前会员积分不够兑换", "积分兑换", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int duration = DbHelper.Instance.IsLastBonusChange(currVip.vipId, listGoodsInfo, needBonus);
@@ -638,15 +638,28 @@ namespace IntegralSystem
             }
         }
 
-        private void linkLabelUser_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void linkLabelUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             EditUserForm editUserForm = new EditUserForm(LoginForm.UserType, LoginForm.Username);
             editUserForm.ShowDialog();
+        }
+
+        private void labelTime_DoubleClick(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "备份数据库";
+            if (Directory.Exists(@"D:\"))
+                saveFileDialog.InitialDirectory = @"D:\";
+            saveFileDialog.DefaultExt = ".db";
+            saveFileDialog.FileName = "数据库" + DateTime.Now.ToString("yyyyMMdd") + ".db";
+            saveFileDialog.Filter = "数据库文件 (*.db)|*.db|全部文件|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (!DbHelper.Instance.BackupDatabase(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("备份数据库失败，请更换备份目录重试", "备份数据库", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
     }

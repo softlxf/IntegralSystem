@@ -65,7 +65,7 @@ namespace IntegralSystem
 
             if (!DbHelper.Instance.UpdateVip(vipId, vipName, vipTel))
             {
-                MessageBox.Show("更改会员信息失败", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("更改会员信息失败，可能已存在相同名称和电话号码的会员", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DbHelper.Instance.InsertLog(DbHelper.LogType.MemberUpdate, string.Format("更改会员信息：{0},{1},{2}", vipId, vipName, vipTel));

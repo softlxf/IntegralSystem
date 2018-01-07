@@ -95,17 +95,18 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(137, 124);
+            this.buttonDelete.Location = new System.Drawing.Point(173, 124);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(89, 23);
             this.buttonDelete.TabIndex = 5;
             this.buttonDelete.Text = "删除";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Visible = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(32, 124);
+            this.buttonSave.Location = new System.Drawing.Point(89, 124);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(89, 23);
             this.buttonSave.TabIndex = 4;
@@ -115,7 +116,7 @@
             // 
             // buttonReg
             // 
-            this.buttonReg.Location = new System.Drawing.Point(77, 124);
+            this.buttonReg.Location = new System.Drawing.Point(89, 124);
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Size = new System.Drawing.Size(89, 23);
             this.buttonReg.TabIndex = 6;

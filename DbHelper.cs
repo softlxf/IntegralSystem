@@ -27,6 +27,7 @@ namespace IntegralSystem
         {
             Login = 0,
             LoginError = 1,
+            BackupDatabase = 5,
             UserUpdate = 11,
             GoodsNew = 20,
             GoodsUpdate = 21,
@@ -104,6 +105,20 @@ namespace IntegralSystem
             int result = cmd.ExecuteNonQuery();
             cmd.Dispose();
             return result == 1;
+        }
+
+        public bool BackupDatabase(string filename)
+        {
+            try
+            {
+                File.Copy(conn.FileName, filename, true);
+                InsertLog(LogType.BackupDatabase, "备份数据库到" + filename);
+                return true;
+            }
+            catch
+            {
+            }
+            return false;
         }
 
         private void backupDatabase()
@@ -226,7 +241,7 @@ namespace IntegralSystem
         public DataTable GetVipList()
         {
             SQLiteCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select id,vipId,vipName,tel,bonus,maxBonus,playCount,playDuration/60 as playDuration,createTime from members where isDelete<>1";
+            cmd.CommandText = "select id,vipId,vipName,tel,bonus,maxBonus,playCount,playDuration/60 as playDuration,createTime from members";// where isDelete<>1
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -246,7 +261,7 @@ namespace IntegralSystem
             if (text.Length == 3 && int.TryParse(text, out vipId) && vipId > 0)
             {
                 SQLiteCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select id,vipId,vipName,tel,bonus,createTime,maxBonus from members where isDelete<>1 and vipId=" + vipId;
+                cmd.CommandText = "select id,vipId,vipName,tel,bonus,createTime,maxBonus from members where vipId=" + vipId;
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 adapter.Fill(dataTableForVipId);
                 cmd.Dispose();
@@ -254,7 +269,7 @@ namespace IntegralSystem
             if (Regex.IsMatch(text, @"^\d{4,12}$"))
             {
                 SQLiteCommand cmd = conn.CreateCommand();
-                cmd.CommandText = string.Format("select id,vipId,vipName,tel,bonus,createTime,maxBonus from members where isDelete<>1 and tel like '%{0}%' order by tel", text);
+                cmd.CommandText = string.Format("select id,vipId,vipName,tel,bonus,createTime,maxBonus from members where tel like '%{0}%' order by tel", text);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 adapter.Fill(dataTableForTel);
                 cmd.Dispose();
@@ -262,7 +277,7 @@ namespace IntegralSystem
             try
             {
                 SQLiteCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select id,vipId,vipName,tel,bonus,createTime,maxBonus from members where isDelete<>1 and vipName like @vipName order by vipName";
+                cmd.CommandText = "select id,vipId,vipName,tel,bonus,createTime,maxBonus from members where vipName like @vipName order by vipName";
                 cmd.Parameters.AddWithValue("@vipName", "%" + text + "%");
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 adapter.Fill(dataTableForName);
@@ -422,7 +437,7 @@ namespace IntegralSystem
             if (int.TryParse(val, out intVal) && intVal > 0 && intVal < 1000)
             {
                 SQLiteCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where isDelete<>1 and vipId=" + val;
+                cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where vipId=" + val;
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows && reader.Read())
                 {
@@ -433,7 +448,7 @@ namespace IntegralSystem
             if (Regex.IsMatch(val, @"^\d{4,12}$"))
             {
                 SQLiteCommand cmd = conn.CreateCommand();
-                cmd.CommandText = string.Format("select vipId,vipName,tel,bonus,maxBonus from members where isDelete<>1 and tel like '%{0}%' order by tel", val);
+                cmd.CommandText = string.Format("select vipId,vipName,tel,bonus,maxBonus from members where tel like '%{0}%' order by tel", val);
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -446,7 +461,7 @@ namespace IntegralSystem
             try
             {
                 SQLiteCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where isDelete<>1 and vipName like @vipName order by vipName";
+                cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where vipName like @vipName order by vipName";
                 cmd.Parameters.AddWithValue("@vipName", "%" + val + "%");
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -470,7 +485,7 @@ namespace IntegralSystem
         {
             VipInfo vipInfo = null;
             SQLiteCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where isDelete<>1 and vipId=" + vipId;
+            cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where vipId=" + vipId;
             SQLiteDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows && reader.Read())
             {
@@ -484,7 +499,7 @@ namespace IntegralSystem
         {
             VipInfo vipInfo = null;
             SQLiteCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where isDelete<>1 and tel=@tel";
+            cmd.CommandText = "select vipId,vipName,tel,bonus,maxBonus from members where tel=@tel";
             cmd.Parameters.AddWithValue("@tel", "%" + val + "%");
             SQLiteDataReader reader = cmd.ExecuteReader();
             int count = 0;
@@ -591,7 +606,7 @@ namespace IntegralSystem
             {
                 float changeBonus = -consumeBonus;
                 float currBonus = vipInfo.bonus + changeBonus;
-                cmd.CommandText = string.Format("update members set bonus=bonus-{0} where vipId={1} and isDelete<>1", consumeBonus, vipId);
+                cmd.CommandText = string.Format("update members set bonus=bonus-{0} where vipId={1}", consumeBonus, vipId);
                 int result = cmd.ExecuteNonQuery();
                 if (result != 1)
                 {
@@ -656,7 +671,7 @@ namespace IntegralSystem
             {
                 float currBonus = vipInfo.bonus - changeBonus;
                 if (type == (int)BonusChangeType.Consume)
-                    cmd.CommandText = string.Format("update members set bonus={0} where vipId={2}", currBonus, vipId);
+                    cmd.CommandText = string.Format("update members set bonus={0} where vipId={1}", currBonus, vipId);
                 else
                     cmd.CommandText = string.Format("update members set bonus={0},maxBonus=maxBonus-{1},playCount=playCount-1,playDuration=playDuration-{2} where vipId={3}", currBonus, changeBonus, duration, vipId);
                 int result = cmd.ExecuteNonQuery();
