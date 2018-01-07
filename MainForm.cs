@@ -42,6 +42,8 @@ namespace IntegralSystem
             dataGridViewBonus.Size = panelMain.Size;
             dataGridViewGoodsList.Size = panelMain.Size;
 
+            buttonMainPage.BackColor = Color.DarkOrange;
+
             LoginForm loginForm = new LoginForm();
             if (loginForm.ShowDialog() != DialogResult.OK)
             {
@@ -72,29 +74,36 @@ namespace IntegralSystem
             dataGridViewMembers.Visible = false;
             dataGridViewBonus.Visible = false;
             dataGridViewGoodsList.Visible = false;
-            labelTime.Visible = false;
             panelMembers.Visible = false;
             panelBonus.Visible = false;
+
+            buttonMainPage.BackColor = Color.FromArgb(33, 144, 163);
+            buttonVipPage.BackColor = Color.FromArgb(33, 144, 163);
+            buttonBonusHistoryPage.BackColor = Color.FromArgb(33, 144, 163);
+            buttonGoodsPage.BackColor = Color.FromArgb(33, 144, 163);
 
             switch (pageName)
             {
                 case PageName.Main:
+                    buttonMainPage.BackColor = Color.DarkOrange;
                     panelMain.Visible = true;
-                    labelTime.Visible = true;
                     currPage = pageName;
                     updateVipInfo();
                     break;
                 case PageName.Members:
+                    buttonVipPage.BackColor = Color.DarkOrange;
                     panelMembers.Visible = true;
                     dataGridViewMembers.Visible = true;
                     currPage = pageName;
                     break;
                 case PageName.BonusChange:
+                    buttonBonusHistoryPage.BackColor = Color.DarkOrange;
                     panelBonus.Visible = true;
                     dataGridViewBonus.Visible = true;
                     currPage = pageName;
                     break;
                 case PageName.Goods:
+                    buttonGoodsPage.BackColor = Color.DarkOrange;
                     dataGridViewGoodsList.Visible = true;
                     currPage = pageName;
                     break;
@@ -188,7 +197,7 @@ namespace IntegralSystem
 
         private void dataGridViewMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewMembers.Rows.Count - 1 && e.ColumnIndex >= 0)
             {
                 DataGridViewColumn column = dataGridViewMembers.Columns[e.ColumnIndex];
                 if (column is DataGridViewButtonColumn)
@@ -297,22 +306,22 @@ namespace IntegralSystem
                 return;
             if (comboBoxLevel.SelectedIndex == -1)
             {
-                MessageBox.Show("请先选择级别");
+                MessageBox.Show("请先选择级别", "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (totalMinutes <= 0 || textBoxDuration.Text.Length == 0)
             {
-                MessageBox.Show("上下桌时间不正确");
+                MessageBox.Show("上下桌时间不正确", "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (totalMinutes < 15)
             {
-                MessageBox.Show("上下桌时长必须至少15分钟");
+                MessageBox.Show("上下桌时长必须至少15分钟", "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (totalMinutes >= 60 * 24 * 3)
             {
-                MessageBox.Show("上下桌时长不能大于3天");
+                MessageBox.Show("上下桌时长不能大于3天", "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int halfHourCount = (totalMinutes + 15) / 30;
@@ -327,7 +336,7 @@ namespace IntegralSystem
             }
             else
             {
-                MessageBox.Show("请先选择级别");
+                MessageBox.Show("请先选择级别", "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             string msg;
@@ -335,12 +344,12 @@ namespace IntegralSystem
                 , dateTimePickerStart.Value, dateTimePickerEnd.Value, totalMinutes, bonus, out msg);
             if (result)
             {
-                MessageBox.Show(msg, "积分成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(msg, "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 updateVipInfo();
             }
             else
             {
-                MessageBox.Show(msg, "积分失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(msg, "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -446,12 +455,12 @@ namespace IntegralSystem
             }
             if (listGoodsInfo.Count == 0)
             {
-                MessageBox.Show("请先增加需要兑换的商品");
+                MessageBox.Show("请先增加需要兑换的商品", "积分兑换", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (needBonus > currVip.bonus)
             {
-                MessageBox.Show("你选择的兑换商品所需积分超出会员当前所拥有的总积分");
+                MessageBox.Show("你选择的兑换商品所需积分超出会员当前所拥有的总积分", "积分兑换", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int duration = DbHelper.Instance.IsLastBonusChange(currVip.vipId, listGoodsInfo, needBonus);

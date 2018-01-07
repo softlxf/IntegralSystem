@@ -43,17 +43,17 @@ namespace IntegralSystem
         {
             if (textBoxPassword.Text == "")
             {
-                MessageBox.Show("密码不能为空");
+                MessageBox.Show("密码不能为空", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (textBoxPassword.Text != textBoxPassword2.Text)
             {
-                MessageBox.Show("两次密码输入不一致");
+                MessageBox.Show("两次密码输入不一致", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!DbHelper.Instance.UpdateUser(comboBoxUser.Text, type, textBoxPassword.Text))
             {
-                MessageBox.Show("更改用户密码失败");
+                MessageBox.Show("更改用户密码失败", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DbHelper.Instance.InsertLog(DbHelper.LogType.UserUpdate, string.Format("更改用户信息：{0},{1}", type, comboBoxUser.Text));

@@ -44,12 +44,10 @@ namespace IntegralSystem
 
         private DbHelper()
         {
-            string dbPath = "IntegralSystem.db";
-            if (!File.Exists(dbPath))
-            {
-                File.WriteAllBytes(dbPath, IntegralSystem.Properties.Resources.IntegralSystem);
-            }
-            conn = new SQLiteConnection("Data Source=IntegralSystem.db");
+            string dbFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\IntegralSystem\IntegralSystem.db";
+            if (!File.Exists(dbFile))
+                dbFile = "IntegralSystem.db";
+            conn = new SQLiteConnection("Data Source=" + dbFile);
             conn.SetPassword("SystemIntegral");
             conn.Open();
             //conn.ChangePassword("");
@@ -107,6 +105,30 @@ namespace IntegralSystem
             return result == 1;
         }
 
+        private void backupDatabase()
+        {
+            string filename = Path.GetDirectoryName(conn.FileName);
+            if (Settings.Default.LastBackupMonth != DateTime.Now.Month)
+            {
+                Settings.Default.LastBackupMonth = DateTime.Now.Month;
+                Settings.Default.Save();
+                filename += @"\backup\IntegralSystemM" + DateTime.Now.Month + ".db";
+            }
+            else if (Settings.Default.LastBackupDay != DateTime.Now.Day)
+            {
+                Settings.Default.LastBackupDay = DateTime.Now.Day;
+                Settings.Default.Save();
+                filename += @"\backup\IntegralSystemD" + DateTime.Now.Day + ".db";
+            }
+            if (filename != "" && Directory.Exists(Path.GetDirectoryName(filename)))
+            {
+                DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(filename));
+                di.Attributes = FileAttributes.Hidden | di.Attributes;
+                File.Copy(conn.FileName, filename, true);
+            }
+            
+        }
+
         public int UserLogin(string username, string password)
         {
             List<string> users = new List<string>();
@@ -126,6 +148,10 @@ namespace IntegralSystem
                 cmd.ExecuteNonQuery();
             }
             cmd.Dispose();
+            if (type >= 0)
+            {
+                backupDatabase();
+            }
             return type;
         }
 
@@ -522,7 +548,7 @@ namespace IntegralSystem
                     return false;
                 }
                 transaction.Commit();
-                msg = string.Format("成功积分{0}，会员当前总剩余积分为{1}", changeBonus, currBonus);
+                msg = string.Format("成功积分{0}，当前剩余总积分{1}", changeBonus, currBonus);
                 return true;
             }
             catch (Exception ex)

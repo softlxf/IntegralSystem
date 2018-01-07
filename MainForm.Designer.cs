@@ -1175,6 +1175,7 @@
             this.linkLabelUser.AutoSize = true;
             this.linkLabelUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(56)))), ((int)(((byte)(98)))));
             this.linkLabelUser.Font = new System.Drawing.Font("SimSun", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.linkLabelUser.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelUser.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(117)))), ((int)(((byte)(139)))));
             this.linkLabelUser.Location = new System.Drawing.Point(830, 19);
             this.linkLabelUser.Name = "linkLabelUser";
@@ -1188,9 +1189,11 @@
             // 
             // buttonGoodsPage
             // 
-            this.buttonGoodsPage.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonGoodsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(144)))), ((int)(((byte)(163)))));
+            this.buttonGoodsPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGoodsPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGoodsPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonGoodsPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonGoodsPage.ForeColor = System.Drawing.Color.White;
             this.buttonGoodsPage.Location = new System.Drawing.Point(403, 88);
             this.buttonGoodsPage.Name = "buttonGoodsPage";
             this.buttonGoodsPage.Size = new System.Drawing.Size(120, 35);
@@ -1201,9 +1204,11 @@
             // 
             // buttonBonusHistoryPage
             // 
-            this.buttonBonusHistoryPage.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonBonusHistoryPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(144)))), ((int)(((byte)(163)))));
+            this.buttonBonusHistoryPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBonusHistoryPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBonusHistoryPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonBonusHistoryPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonBonusHistoryPage.ForeColor = System.Drawing.Color.White;
             this.buttonBonusHistoryPage.Location = new System.Drawing.Point(274, 88);
             this.buttonBonusHistoryPage.Name = "buttonBonusHistoryPage";
             this.buttonBonusHistoryPage.Size = new System.Drawing.Size(120, 35);
@@ -1214,9 +1219,11 @@
             // 
             // buttonVipPage
             // 
-            this.buttonVipPage.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonVipPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(144)))), ((int)(((byte)(163)))));
+            this.buttonVipPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVipPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVipPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonVipPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonVipPage.ForeColor = System.Drawing.Color.White;
             this.buttonVipPage.Location = new System.Drawing.Point(144, 88);
             this.buttonVipPage.Name = "buttonVipPage";
             this.buttonVipPage.Size = new System.Drawing.Size(120, 35);
@@ -1227,9 +1234,11 @@
             // 
             // buttonMainPage
             // 
-            this.buttonMainPage.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonMainPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(144)))), ((int)(((byte)(163)))));
+            this.buttonMainPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMainPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonMainPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonMainPage.ForeColor = System.Drawing.Color.White;
             this.buttonMainPage.Location = new System.Drawing.Point(15, 88);
             this.buttonMainPage.Name = "buttonMainPage";
             this.buttonMainPage.Size = new System.Drawing.Size(120, 35);

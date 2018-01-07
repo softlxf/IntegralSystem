@@ -58,6 +58,7 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(79, 64);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(170, 23);
             this.textBoxPassword.TabIndex = 2;
             // 
@@ -95,7 +96,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.Text = "登录";
+            this.Text = "齐开得胜会员积分系统";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

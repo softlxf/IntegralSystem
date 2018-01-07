@@ -35,19 +35,19 @@ namespace IntegralSystem
         {
             if (comboBoxUser.Text == "")
             {
-                MessageBox.Show("请输入登录用户名");
+                MessageBox.Show("请输入登录用户名", "用户登录", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (textBoxPassword.Text == "")
             {
-                MessageBox.Show("请输入用户密码");
+                MessageBox.Show("请输入用户密码", "用户登录", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             userType = DbHelper.Instance.UserLogin(comboBoxUser.Text, textBoxPassword.Text);
             if (userType < 0)
             {
                 failCount++;
-                MessageBox.Show("用户名或密码错误");
+                MessageBox.Show("用户名或密码错误", "用户登录", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (failCount >= 3)
                 {
                     DbHelper.Instance.InsertLog(DbHelper.LogType.LoginError, "用户" + comboBoxUser.Text + "3次尝试登录失败");

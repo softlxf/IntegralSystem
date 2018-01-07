@@ -51,21 +51,21 @@ namespace IntegralSystem
             string vipTel = textBoxTel.Text.Trim();
             if (vipName.Length < 1)
             {
-                MessageBox.Show("会员名称不能为空");
+                MessageBox.Show("会员名称不能为空", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (vipTel.Length > 0)
             {
                 if (!(Regex.IsMatch(vipTel, @"^\+?1\d{10}$") || Regex.IsMatch(vipTel, @"^\+?\d{7,12}$") || Regex.IsMatch(vipTel, @"^\+?\d{3,4}-\d{7,8}$")))
                 {
-                    MessageBox.Show("电话号码格式错误");
+                    MessageBox.Show("电话号码格式错误", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
             if (!DbHelper.Instance.UpdateVip(vipId, vipName, vipTel))
             {
-                MessageBox.Show("更改会员信息失败");
+                MessageBox.Show("更改会员信息失败", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DbHelper.Instance.InsertLog(DbHelper.LogType.MemberUpdate, string.Format("更改会员信息：{0},{1},{2}", vipId, vipName, vipTel));
@@ -75,12 +75,12 @@ namespace IntegralSystem
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("你确认要删除此会员吗？", "会员更改", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.OK)
+            if (MessageBox.Show("你确认要删除此会员吗？", "会员信息修改", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.OK)
                 return;
             int vipId = int.Parse(textBoxVipId.Text);
             if (!DbHelper.Instance.DeleteVip(vipId))
             {
-                MessageBox.Show("删除会员失败");
+                MessageBox.Show("删除会员失败", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DbHelper.Instance.InsertLog(DbHelper.LogType.MemberDelete, string.Format("删除会员：{0}", vipId));
@@ -102,7 +102,7 @@ namespace IntegralSystem
             {
                 if (!(Regex.IsMatch(vipTel, @"^1\d{10}$") || Regex.IsMatch(vipTel, @"^0\d{10,12}$") || Regex.IsMatch(vipTel, @"^\d{7,8}$")))
                 {
-                    MessageBox.Show("电话号码长度或格式错误");
+                    MessageBox.Show("电话号码长度或格式错误", "会员注册", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegralSystem", "IntegralSystem.csproj", "{4BAB2771-EAB5-4DEB-9711-CEDE1A72A219}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupIntegralSystem", "..\SetupIntegralSystem\SetupIntegralSystem.vdproj", "{E1A4E2CA-7808-422B-87DD-35D2CD66AB0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 		{4BAB2771-EAB5-4DEB-9711-CEDE1A72A219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BAB2771-EAB5-4DEB-9711-CEDE1A72A219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BAB2771-EAB5-4DEB-9711-CEDE1A72A219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A4E2CA-7808-422B-87DD-35D2CD66AB0A}.Debug|Any CPU.ActiveCfg = Release
+		{E1A4E2CA-7808-422B-87DD-35D2CD66AB0A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
