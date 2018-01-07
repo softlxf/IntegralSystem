@@ -7,6 +7,7 @@ using System.Data;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.IO;
+using IntegralSystem.Properties;
 
 namespace IntegralSystem
 {
