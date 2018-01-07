@@ -385,12 +385,12 @@ namespace IntegralSystem
             DateTime endTime = startTime.AddMonths(1).AddDays(1);
             if (vipId == 0)
             {
-                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime from bonus_change where createTime>=datetime('{0}') and createTime<datetime('{1}')"
+                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime,consume from bonus_change where createTime>=datetime('{0}') and createTime<datetime('{1}')"
                     , startTime.ToString("yyyy-MM-dd HH:mm:ss"), endTime.ToString("yyyy-MM-dd HH:mm:ss"));
             }
             else
             {
-                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime from bonus_change where vipId={0} and createTime>=datetime('{1}') and createTime<datetime('{2}')"
+                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime,consume from bonus_change where vipId={0} and createTime>=datetime('{1}') and createTime<datetime('{2}')"
                     , vipId, startTime.ToString("yyyy-MM-dd HH:mm:ss"), endTime.ToString("yyyy-MM-dd HH:mm:ss"));
             }
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
