@@ -108,18 +108,18 @@ namespace IntegralSystem
 
         private void backupDatabase()
         {
-            string filename = Path.GetDirectoryName(conn.FileName);
+            string filename = "";
             if (Settings.Default.LastBackupMonth != DateTime.Now.Month)
             {
                 Settings.Default.LastBackupMonth = DateTime.Now.Month;
                 Settings.Default.Save();
-                filename += @"\backup\IntegralSystemM" + DateTime.Now.Month + ".db";
+                filename = Path.GetDirectoryName(conn.FileName) + @"\backup\IntegralSystemM" + DateTime.Now.Month + ".db";
             }
             else if (Settings.Default.LastBackupDay != DateTime.Now.Day)
             {
                 Settings.Default.LastBackupDay = DateTime.Now.Day;
                 Settings.Default.Save();
-                filename += @"\backup\IntegralSystemD" + DateTime.Now.Day + ".db";
+                filename = Path.GetDirectoryName(conn.FileName) + @"\backup\IntegralSystemD" + DateTime.Now.Day + ".db";
             }
             if (filename != "" && Directory.Exists(Path.GetDirectoryName(filename)))
             {
@@ -127,7 +127,6 @@ namespace IntegralSystem
                 di.Attributes = FileAttributes.Hidden | di.Attributes;
                 File.Copy(conn.FileName, filename, true);
             }
-            
         }
 
         public int UserLogin(string username, string password)
