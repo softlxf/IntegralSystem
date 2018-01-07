@@ -20,7 +20,7 @@ namespace IntegralSystem
         {
             InitializeComponent();
             vipId = DbHelper.Instance.GetMaxVipId() + 1;
-            textBoxVipId.Text = vipId.ToString();
+            textBoxVipId.Text = vipId.ToString("000");
 
             buttonReg.Visible = true;
             AcceptButton = buttonReg;
@@ -35,7 +35,7 @@ namespace IntegralSystem
             this.vipId = vipId;
             this.vipName = vipName;
             this.tel = tel;
-            textBoxVipId.Text = vipId.ToString();
+            textBoxVipId.Text = vipId.ToString("000");
             textBoxVipName.Text = vipName;
             textBoxTel.Text = tel;
         }
