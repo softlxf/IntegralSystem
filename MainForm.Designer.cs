@@ -30,6 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,17 +58,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewMembers = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vipId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.level = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addBonus = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bonusHistory = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxVipName = new System.Windows.Forms.TextBox();
             this.textBoxCurrBonus = new System.Windows.Forms.TextBox();
@@ -135,17 +146,8 @@
             this.buttonMainPage = new System.Windows.Forms.Button();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vipId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.level = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addBonus = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.bonusHistory = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.textBoxTotalBonus = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBonus)).BeginInit();
@@ -201,6 +203,141 @@
             this.dataGridViewMembers.Visible = false;
             this.dataGridViewMembers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMembers_CellDoubleClick);
             this.dataGridViewMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMembers_CellContentClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle1;
+            this.id.HeaderText = "id";
+            this.id.MinimumWidth = 10;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.ToolTipText = "序号";
+            this.id.Visible = false;
+            this.id.Width = 60;
+            // 
+            // vipId
+            // 
+            this.vipId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.vipId.DataPropertyName = "vipId";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "000";
+            dataGridViewCellStyle2.NullValue = null;
+            this.vipId.DefaultCellStyle = dataGridViewCellStyle2;
+            this.vipId.FillWeight = 80F;
+            this.vipId.HeaderText = "会员号";
+            this.vipId.MinimumWidth = 10;
+            this.vipId.Name = "vipId";
+            this.vipId.ReadOnly = true;
+            // 
+            // vipName
+            // 
+            this.vipName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.vipName.DataPropertyName = "vipName";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.vipName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.vipName.HeaderText = "会员名称";
+            this.vipName.MinimumWidth = 10;
+            this.vipName.Name = "vipName";
+            this.vipName.ReadOnly = true;
+            // 
+            // tel
+            // 
+            this.tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tel.DataPropertyName = "tel";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.tel.DefaultCellStyle = dataGridViewCellStyle4;
+            this.tel.HeaderText = "电话号码";
+            this.tel.MinimumWidth = 10;
+            this.tel.Name = "tel";
+            this.tel.ReadOnly = true;
+            // 
+            // bonus
+            // 
+            this.bonus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.bonus.DataPropertyName = "bonus";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.bonus.DefaultCellStyle = dataGridViewCellStyle5;
+            this.bonus.FillWeight = 80F;
+            this.bonus.HeaderText = "当前积分";
+            this.bonus.MinimumWidth = 10;
+            this.bonus.Name = "bonus";
+            this.bonus.ReadOnly = true;
+            // 
+            // level
+            // 
+            this.level.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.level.DataPropertyName = "maxBonus";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.level.DefaultCellStyle = dataGridViewCellStyle6;
+            this.level.FillWeight = 80F;
+            this.level.HeaderText = "累计积分";
+            this.level.MinimumWidth = 10;
+            this.level.Name = "level";
+            this.level.ReadOnly = true;
+            this.level.Visible = false;
+            // 
+            // playCount
+            // 
+            this.playCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.playCount.DataPropertyName = "playCount";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.playCount.DefaultCellStyle = dataGridViewCellStyle7;
+            this.playCount.FillWeight = 80F;
+            this.playCount.HeaderText = "上桌次数";
+            this.playCount.MinimumWidth = 10;
+            this.playCount.Name = "playCount";
+            this.playCount.ReadOnly = true;
+            // 
+            // playDuration
+            // 
+            this.playDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.playDuration.DataPropertyName = "playDuration";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "0小时";
+            dataGridViewCellStyle8.NullValue = null;
+            this.playDuration.DefaultCellStyle = dataGridViewCellStyle8;
+            this.playDuration.FillWeight = 80F;
+            this.playDuration.HeaderText = "累计时长";
+            this.playDuration.MinimumWidth = 10;
+            this.playDuration.Name = "playDuration";
+            this.playDuration.ReadOnly = true;
+            // 
+            // createTime
+            // 
+            this.createTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.createTime.DataPropertyName = "createTime";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "yyyy-MM-dd HH:mm:ss";
+            this.createTime.DefaultCellStyle = dataGridViewCellStyle9;
+            this.createTime.FillWeight = 120F;
+            this.createTime.HeaderText = "注册时间";
+            this.createTime.MinimumWidth = 10;
+            this.createTime.Name = "createTime";
+            this.createTime.ReadOnly = true;
+            // 
+            // addBonus
+            // 
+            this.addBonus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addBonus.FillWeight = 70F;
+            this.addBonus.HeaderText = "积分/兑换";
+            this.addBonus.MinimumWidth = 10;
+            this.addBonus.Name = "addBonus";
+            this.addBonus.ReadOnly = true;
+            this.addBonus.Text = "前往";
+            this.addBonus.UseColumnTextForButtonValue = true;
+            // 
+            // bonusHistory
+            // 
+            this.bonusHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.bonusHistory.FillWeight = 70F;
+            this.bonusHistory.HeaderText = "积兑记录";
+            this.bonusHistory.MinimumWidth = 10;
+            this.bonusHistory.Name = "bonusHistory";
+            this.bonusHistory.ReadOnly = true;
+            this.bonusHistory.Text = "查看";
+            this.bonusHistory.UseColumnTextForButtonValue = true;
             // 
             // groupBox1
             // 
@@ -328,7 +465,7 @@
             // 
             this.textBoxVip.Location = new System.Drawing.Point(74, 10);
             this.textBoxVip.Name = "textBoxVip";
-            this.textBoxVip.Size = new System.Drawing.Size(287, 21);
+            this.textBoxVip.Size = new System.Drawing.Size(132, 21);
             this.textBoxVip.TabIndex = 7;
             this.textBoxVip.TextChanged += new System.EventHandler(this.textBoxVip_TextChanged);
             // 
@@ -925,7 +1062,9 @@
             // panelMembers
             // 
             this.panelMembers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMembers.Controls.Add(this.label15);
             this.panelMembers.Controls.Add(this.label14);
+            this.panelMembers.Controls.Add(this.textBoxTotalBonus);
             this.panelMembers.Controls.Add(this.textBoxVip);
             this.panelMembers.Location = new System.Drawing.Point(570, 86);
             this.panelMembers.Name = "panelMembers";
@@ -1143,140 +1282,24 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
-            // id
+            // textBoxTotalBonus
             // 
-            this.id.DataPropertyName = "id";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle1;
-            this.id.HeaderText = "id";
-            this.id.MinimumWidth = 10;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.ToolTipText = "序号";
-            this.id.Visible = false;
-            this.id.Width = 60;
+            this.textBoxTotalBonus.Location = new System.Drawing.Point(280, 10);
+            this.textBoxTotalBonus.Name = "textBoxTotalBonus";
+            this.textBoxTotalBonus.ReadOnly = true;
+            this.textBoxTotalBonus.Size = new System.Drawing.Size(82, 21);
+            this.textBoxTotalBonus.TabIndex = 7;
+            this.textBoxTotalBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTotalBonus.TextChanged += new System.EventHandler(this.textBoxVip_TextChanged);
             // 
-            // vipId
+            // label15
             // 
-            this.vipId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.vipId.DataPropertyName = "vipId";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "000";
-            dataGridViewCellStyle2.NullValue = null;
-            this.vipId.DefaultCellStyle = dataGridViewCellStyle2;
-            this.vipId.FillWeight = 80F;
-            this.vipId.HeaderText = "会员号";
-            this.vipId.MinimumWidth = 10;
-            this.vipId.Name = "vipId";
-            this.vipId.ReadOnly = true;
-            // 
-            // vipName
-            // 
-            this.vipName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.vipName.DataPropertyName = "vipName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.vipName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.vipName.HeaderText = "会员名称";
-            this.vipName.MinimumWidth = 10;
-            this.vipName.Name = "vipName";
-            this.vipName.ReadOnly = true;
-            // 
-            // tel
-            // 
-            this.tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tel.DataPropertyName = "tel";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.tel.DefaultCellStyle = dataGridViewCellStyle4;
-            this.tel.HeaderText = "电话号码";
-            this.tel.MinimumWidth = 10;
-            this.tel.Name = "tel";
-            this.tel.ReadOnly = true;
-            // 
-            // bonus
-            // 
-            this.bonus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.bonus.DataPropertyName = "bonus";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.bonus.DefaultCellStyle = dataGridViewCellStyle5;
-            this.bonus.FillWeight = 80F;
-            this.bonus.HeaderText = "当前积分";
-            this.bonus.MinimumWidth = 10;
-            this.bonus.Name = "bonus";
-            this.bonus.ReadOnly = true;
-            // 
-            // level
-            // 
-            this.level.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.level.DataPropertyName = "maxBonus";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.level.DefaultCellStyle = dataGridViewCellStyle6;
-            this.level.FillWeight = 80F;
-            this.level.HeaderText = "累计积分";
-            this.level.MinimumWidth = 10;
-            this.level.Name = "level";
-            this.level.ReadOnly = true;
-            this.level.Visible = false;
-            // 
-            // playCount
-            // 
-            this.playCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.playCount.DataPropertyName = "playCount";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.playCount.DefaultCellStyle = dataGridViewCellStyle7;
-            this.playCount.FillWeight = 80F;
-            this.playCount.HeaderText = "上桌次数";
-            this.playCount.MinimumWidth = 10;
-            this.playCount.Name = "playCount";
-            this.playCount.ReadOnly = true;
-            // 
-            // playDuration
-            // 
-            this.playDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.playDuration.DataPropertyName = "playDuration";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "0小时";
-            dataGridViewCellStyle8.NullValue = null;
-            this.playDuration.DefaultCellStyle = dataGridViewCellStyle8;
-            this.playDuration.FillWeight = 80F;
-            this.playDuration.HeaderText = "累计时长";
-            this.playDuration.MinimumWidth = 10;
-            this.playDuration.Name = "playDuration";
-            this.playDuration.ReadOnly = true;
-            // 
-            // createTime
-            // 
-            this.createTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.createTime.DataPropertyName = "createTime";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "yyyy-MM-dd HH:mm:ss";
-            this.createTime.DefaultCellStyle = dataGridViewCellStyle9;
-            this.createTime.FillWeight = 120F;
-            this.createTime.HeaderText = "注册时间";
-            this.createTime.MinimumWidth = 10;
-            this.createTime.Name = "createTime";
-            this.createTime.ReadOnly = true;
-            // 
-            // addBonus
-            // 
-            this.addBonus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addBonus.FillWeight = 70F;
-            this.addBonus.HeaderText = "积分/兑换";
-            this.addBonus.MinimumWidth = 10;
-            this.addBonus.Name = "addBonus";
-            this.addBonus.ReadOnly = true;
-            this.addBonus.Text = "前往";
-            this.addBonus.UseColumnTextForButtonValue = true;
-            // 
-            // bonusHistory
-            // 
-            this.bonusHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.bonusHistory.FillWeight = 70F;
-            this.bonusHistory.HeaderText = "积兑记录";
-            this.bonusHistory.MinimumWidth = 10;
-            this.bonusHistory.Name = "bonusHistory";
-            this.bonusHistory.ReadOnly = true;
-            this.bonusHistory.Text = "查看";
-            this.bonusHistory.UseColumnTextForButtonValue = true;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(221, 13);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 12);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "累计记分";
             // 
             // MainForm
             // 
@@ -1284,7 +1307,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 561);
             this.Controls.Add(this.labelTime);
-            this.Controls.Add(this.panelMembers);
             this.Controls.Add(this.buttonGoodsPage);
             this.Controls.Add(this.buttonBonusHistoryPage);
             this.Controls.Add(this.buttonVipPage);
@@ -1294,9 +1316,10 @@
             this.Controls.Add(this.dataGridViewMembers);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.dataGridViewBonus);
-            this.Controls.Add(this.panelBonus);
             this.Controls.Add(this.pictureBoxMain);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panelMembers);
+            this.Controls.Add(this.panelBonus);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(970, 600);
             this.Name = "MainForm";
@@ -1413,6 +1436,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createTime;
         private System.Windows.Forms.DataGridViewButtonColumn addBonus;
         private System.Windows.Forms.DataGridViewButtonColumn bonusHistory;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxTotalBonus;
     }
 }
 

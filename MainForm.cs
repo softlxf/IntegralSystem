@@ -138,7 +138,18 @@ namespace IntegralSystem
         private void buttonVipPage_Click(object sender, EventArgs e)
         {
             switchPage(PageName.Members);
-            dataGridViewMembers.DataSource = DbHelper.Instance.GetVipList();
+            DataTable dataTablte = DbHelper.Instance.GetVipList();
+            dataGridViewMembers.DataSource = dataTablte;
+            float bonus = 0;
+            if (dataTablte.Rows.Count > 0)
+            {
+                DataColumn column = dataTablte.Columns["bonus"];
+                foreach (DataRow row in dataTablte.Rows)
+                {
+                    bonus += (float)row.Field<double>(column);
+                }
+            }
+            textBoxTotalBonus.Text = bonus.ToString();
         }
 
 

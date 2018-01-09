@@ -96,6 +96,25 @@ namespace IntegralSystem
             return users;
         }
 
+        public bool CheckUser(string username, string password)
+        {
+            SQLiteCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select id,type from user where username=@username and password=@password";
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", CryptoHelper.EncryptAes(password, CryptoHelper.AesKey));
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            int type = -1;
+            int id = -1;
+            if (reader.Read())
+            {
+                id = reader.GetInt32(0);
+                type = reader.GetInt32(1);
+                reader.Dispose();
+            }
+            cmd.Dispose();
+            return type >= 0;
+        }
+
         public bool UpdateUser(string username, int type, string password)
         {
             List<string> users = new List<string>();

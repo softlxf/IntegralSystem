@@ -29,6 +29,7 @@ namespace IntegralSystem
                 foreach (string user in users)
                     comboBoxUser.Items.Add(user);
                 comboBoxUser.Text = userName;
+                textBoxOldPass.Enabled = false;
                 comboBoxUser.Enabled = true;
             }
             else
@@ -41,14 +42,32 @@ namespace IntegralSystem
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            if (type != 0)
+            {
+                if (textBoxOldPass.Text == "")
+                {
+                    MessageBox.Show("原密码不能为空", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!DbHelper.Instance.CheckUser(comboBoxUser.Text, textBoxOldPass.Text))
+                {
+                    MessageBox.Show("原密码输入错误", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             if (textBoxPassword.Text == "")
             {
-                MessageBox.Show("密码不能为空", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("新密码不能为空", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (textBoxPassword.Text != textBoxPassword2.Text)
             {
                 MessageBox.Show("两次密码输入不一致", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (textBoxPassword.Text == textBoxOldPass.Text)
+            {
+                MessageBox.Show("原密码和新密码不能相同", "密码修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!DbHelper.Instance.UpdateUser(comboBoxUser.Text, type, textBoxPassword.Text))

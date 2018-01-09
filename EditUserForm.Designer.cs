@@ -35,11 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxPassword2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxOldPass = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(97, 126);
+            this.buttonSave.Location = new System.Drawing.Point(97, 149);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(83, 29);
             this.buttonSave.TabIndex = 4;
@@ -52,14 +54,14 @@
             this.comboBoxUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUser.Enabled = false;
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(73, 23);
+            this.comboBoxUser.Location = new System.Drawing.Point(73, 22);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(170, 20);
             this.comboBoxUser.TabIndex = 1;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(73, 55);
+            this.textBoxPassword.Location = new System.Drawing.Point(73, 84);
             this.textBoxPassword.MaxLength = 15;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
@@ -69,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 58);
+            this.label2.Location = new System.Drawing.Point(26, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 4;
@@ -78,7 +80,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 26);
+            this.label1.Location = new System.Drawing.Point(26, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 5;
@@ -87,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 91);
+            this.label3.Location = new System.Drawing.Point(18, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 4;
@@ -95,23 +97,43 @@
             // 
             // textBoxPassword2
             // 
-            this.textBoxPassword2.Location = new System.Drawing.Point(73, 88);
+            this.textBoxPassword2.Location = new System.Drawing.Point(73, 116);
             this.textBoxPassword2.MaxLength = 15;
             this.textBoxPassword2.Name = "textBoxPassword2";
             this.textBoxPassword2.PasswordChar = '*';
             this.textBoxPassword2.Size = new System.Drawing.Size(170, 21);
             this.textBoxPassword2.TabIndex = 3;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "原密码";
+            // 
+            // textBoxOldPass
+            // 
+            this.textBoxOldPass.Location = new System.Drawing.Point(73, 53);
+            this.textBoxOldPass.MaxLength = 15;
+            this.textBoxOldPass.Name = "textBoxOldPass";
+            this.textBoxOldPass.PasswordChar = '*';
+            this.textBoxOldPass.Size = new System.Drawing.Size(170, 21);
+            this.textBoxOldPass.TabIndex = 2;
+            // 
             // EditUserForm
             // 
             this.AcceptButton = this.buttonSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 167);
+            this.ClientSize = new System.Drawing.Size(267, 190);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxUser);
             this.Controls.Add(this.textBoxPassword2);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxOldPass);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -134,6 +156,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxPassword2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxOldPass;
 
     }
 }
