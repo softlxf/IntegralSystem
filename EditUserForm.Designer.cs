@@ -67,6 +67,7 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(170, 21);
             this.textBoxPassword.TabIndex = 2;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -103,6 +104,7 @@
             this.textBoxPassword2.PasswordChar = '*';
             this.textBoxPassword2.Size = new System.Drawing.Size(170, 21);
             this.textBoxPassword2.TabIndex = 3;
+            this.textBoxPassword2.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -121,6 +123,7 @@
             this.textBoxOldPass.PasswordChar = '*';
             this.textBoxOldPass.Size = new System.Drawing.Size(170, 21);
             this.textBoxOldPass.TabIndex = 2;
+            this.textBoxOldPass.UseSystemPasswordChar = true;
             // 
             // EditUserForm
             // 

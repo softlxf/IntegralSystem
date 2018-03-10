@@ -38,10 +38,11 @@ namespace IntegralSystem
             dataGridViewMembers.Location = panelMain.Location;
             dataGridViewBonus.Location = panelMain.Location;
             dataGridViewGoodsList.Location = panelMain.Location;
+            dataGridViewLog.Location = panelMain.Location;
             dataGridViewMembers.Size = panelMain.Size;
             dataGridViewBonus.Size = panelMain.Size;
             dataGridViewGoodsList.Size = panelMain.Size;
-
+            dataGridViewLog.Size = panelMain.Size;
             buttonMainPage.BackColor = Color.DarkOrange;
 
             LoginForm loginForm = new LoginForm();
@@ -50,6 +51,8 @@ namespace IntegralSystem
                 Close();
                 return;
             }
+            if (LoginForm.UserType != 0)
+                buttonLogPage.Visible = false;
             linkLabelUser.Text = "当前用户：" + LoginForm.Username;
 
             dateTimePickerBonusStart.Value = DateTime.Now.Date.AddDays(-1);
@@ -74,6 +77,7 @@ namespace IntegralSystem
             dataGridViewMembers.Visible = false;
             dataGridViewBonus.Visible = false;
             dataGridViewGoodsList.Visible = false;
+            dataGridViewLog.Visible = false;
             panelMembers.Visible = false;
             panelBonus.Visible = false;
 
@@ -81,6 +85,7 @@ namespace IntegralSystem
             buttonVipPage.BackColor = Color.FromArgb(33, 144, 163);
             buttonBonusHistoryPage.BackColor = Color.FromArgb(33, 144, 163);
             buttonGoodsPage.BackColor = Color.FromArgb(33, 144, 163);
+            buttonLogPage.BackColor = Color.FromArgb(33, 144, 163);
 
             switch (pageName)
             {
@@ -108,6 +113,9 @@ namespace IntegralSystem
                     currPage = pageName;
                     break;
                 case PageName.Log:
+                    buttonLogPage.BackColor = Color.DarkOrange;
+                    dataGridViewLog.Visible = true;
+                    currPage = pageName;
                     break;
             }
         }
@@ -133,6 +141,12 @@ namespace IntegralSystem
         {
             switchPage(PageName.Goods);
             dataGridViewGoodsList.DataSource = DbHelper.Instance.GetGoodsList();
+        }
+
+        private void buttonLogPage_Click(object sender, EventArgs e)
+        {
+            switchPage(PageName.Log);
+            dataGridViewLog.DataSource = DbHelper.Instance.GetLog(DateTime.Now.Date.AddMonths(-1));
         }
 
         private void buttonVipPage_Click(object sender, EventArgs e)
@@ -298,11 +312,15 @@ namespace IntegralSystem
                 int halfHourCount = (totalMinutes + 15) / 30;
                 if (comboBoxLevel.SelectedIndex == 0)
                 {
-                    textBoxBonus.Text = (halfHourCount * 4).ToString();
+                    textBoxBonus.Text = (halfHourCount * 2.5).ToString();
                 }
                 else if (comboBoxLevel.SelectedIndex == 1)
                 {
-                    textBoxBonus.Text = (halfHourCount * 2.5).ToString();
+                    textBoxBonus.Text = (halfHourCount * 4).ToString();
+                }
+                else if (comboBoxLevel.SelectedIndex == 2)
+                {
+                    textBoxBonus.Text = (halfHourCount * 8).ToString();
                 }
                 else
                 {
@@ -339,19 +357,36 @@ namespace IntegralSystem
             float bonus = 0;
             if (comboBoxLevel.SelectedIndex == 0)
             {
-                bonus = halfHourCount * 4;
+                bonus = halfHourCount * 2.5f;
             }
             else if (comboBoxLevel.SelectedIndex == 1)
             {
-                bonus = halfHourCount * 2.5f;
+                bonus = halfHourCount * 4;
+            }
+            else if (comboBoxLevel.SelectedIndex == 2)
+            {
+                bonus = halfHourCount * 8;
             }
             else
             {
                 MessageBox.Show("请先选择级别", "会员积分", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            int level = -1;
+            switch (comboBoxLevel.SelectedIndex)
+            {
+                case 0:
+                    level = 1;
+                    break;
+                case 1:
+                    level = 0;
+                    break;
+                case 2:
+                    level = 2;
+                    break;
+            }
             string msg;
-            bool result = DbHelper.Instance.AddBonus(currVip.vipId, comboBoxLevel.SelectedIndex
+            bool result = DbHelper.Instance.AddBonus(currVip.vipId, level
                 , dateTimePickerStart.Value, dateTimePickerEnd.Value, totalMinutes, bonus, out msg);
             if (result)
             {
@@ -672,6 +707,7 @@ namespace IntegralSystem
                 }
             }
         }
+
 
     }
 }

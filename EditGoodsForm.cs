@@ -52,12 +52,13 @@ namespace IntegralSystem
                 MessageBox.Show("商品价格输入不正确", "添加商品", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!DbHelper.Instance.AddGoods(textBoxName.Text.Trim(), price))
+            int goodsId = DbHelper.Instance.AddGoods(textBoxName.Text.Trim(), price);
+            if (goodsId < 0)
             {
                 MessageBox.Show("商品添加失败，可能已存在相同名称商品", "添加商品", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DbHelper.Instance.InsertLog(DbHelper.LogType.GoodsNew, string.Format("新建商品信息：{0},{1},{2}", -1, textBoxName.Text.Trim(), price));
+            DbHelper.Instance.InsertLog(DbHelper.LogType.GoodsNew, string.Format("新增商品：{0},{1},{2}", goodsId, textBoxName.Text.Trim(), price));
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -85,7 +86,7 @@ namespace IntegralSystem
                 MessageBox.Show("商品修改失败，可能已存在相同名称商品", "修改商品", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DbHelper.Instance.InsertLog(DbHelper.LogType.GoodsUpdate, string.Format("更改商品信息：{0},{1},{2}", goodsId, textBoxName.Text.Trim(), price));
+            DbHelper.Instance.InsertLog(DbHelper.LogType.GoodsUpdate, string.Format("更改商品：{0},{1},{2}", goodsId, textBoxName.Text.Trim(), price));
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -29,6 +29,7 @@ namespace IntegralSystem
             foreach (string user in users)
                 comboBoxUser.Items.Add(user);
             comboBoxUser.SelectedIndex = 0;
+            textBoxPassword.Select();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -50,14 +51,14 @@ namespace IntegralSystem
                 MessageBox.Show("用户名或密码错误", "用户登录", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (failCount >= 3)
                 {
-                    DbHelper.Instance.InsertLog(DbHelper.LogType.LoginError, "用户" + comboBoxUser.Text + "3次尝试登录失败");
+                    DbHelper.Instance.InsertLog(DbHelper.LogType.LoginError, "用户【" + comboBoxUser.Text + "】3次尝试登录失败");
                     DialogResult = DialogResult.Cancel;
                     Close();
                 }
                 return;
             }
             username = comboBoxUser.Text;
-            DbHelper.Instance.InsertLog(DbHelper.LogType.Login, "用户" + comboBoxUser.Text + "登录成功");
+            DbHelper.Instance.InsertLog(DbHelper.LogType.Login, "用户【" + comboBoxUser.Text + "】登录成功");
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -58,6 +58,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewMembers = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +136,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.panelMembers = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.textBoxTotalBonus = new System.Windows.Forms.TextBox();
             this.dataGridViewGoodsList = new System.Windows.Forms.DataGridView();
             this.dataId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -146,8 +154,13 @@
             this.buttonMainPage = new System.Windows.Forms.Button();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBoxTotalBonus = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.dataGridViewLog = new System.Windows.Forms.DataGridView();
+            this.buttonLogPage = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBonus)).BeginInit();
@@ -160,6 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoodsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMembers
@@ -453,8 +467,9 @@
             this.comboBoxLevel.Font = new System.Drawing.Font("SimSun", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBoxLevel.FormattingEnabled = true;
             this.comboBoxLevel.Items.AddRange(new object[] {
+            "5/0",
             "1/2",
-            "5/0"});
+            "2/4"});
             this.comboBoxLevel.Location = new System.Drawing.Point(84, 120);
             this.comboBoxLevel.Name = "comboBoxLevel";
             this.comboBoxLevel.Size = new System.Drawing.Size(170, 21);
@@ -463,9 +478,9 @@
             // 
             // textBoxVip
             // 
-            this.textBoxVip.Location = new System.Drawing.Point(74, 10);
+            this.textBoxVip.Location = new System.Drawing.Point(64, 10);
             this.textBoxVip.Name = "textBoxVip";
-            this.textBoxVip.Size = new System.Drawing.Size(132, 21);
+            this.textBoxVip.Size = new System.Drawing.Size(109, 21);
             this.textBoxVip.TabIndex = 7;
             this.textBoxVip.TextChanged += new System.EventHandler(this.textBoxVip_TextChanged);
             // 
@@ -622,7 +637,7 @@
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewBonus.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridViewBonus.Location = new System.Drawing.Point(667, 256);
+            this.dataGridViewBonus.Location = new System.Drawing.Point(667, 248);
             this.dataGridViewBonus.MultiSelect = false;
             this.dataGridViewBonus.Name = "dataGridViewBonus";
             this.dataGridViewBonus.RowHeadersVisible = false;
@@ -999,16 +1014,16 @@
             this.panelBonus.Controls.Add(this.dateTimePickerBonusStart);
             this.panelBonus.Controls.Add(this.textBoxBonusVipId);
             this.panelBonus.Controls.Add(this.label9);
-            this.panelBonus.Location = new System.Drawing.Point(587, 85);
+            this.panelBonus.Location = new System.Drawing.Point(636, 85);
             this.panelBonus.Name = "panelBonus";
-            this.panelBonus.Size = new System.Drawing.Size(355, 43);
+            this.panelBonus.Size = new System.Drawing.Size(306, 43);
             this.panelBonus.TabIndex = 28;
             this.panelBonus.Visible = false;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(178, 14);
+            this.label11.Location = new System.Drawing.Point(135, 14);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 12);
             this.label11.TabIndex = 3;
@@ -1016,7 +1031,7 @@
             // 
             // dateTimePickerBonusStart
             // 
-            this.dateTimePickerBonusStart.Location = new System.Drawing.Point(213, 10);
+            this.dateTimePickerBonusStart.Location = new System.Drawing.Point(170, 10);
             this.dateTimePickerBonusStart.MaxDate = new System.DateTime(2029, 12, 31, 0, 0, 0, 0);
             this.dateTimePickerBonusStart.MinDate = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerBonusStart.Name = "dateTimePickerBonusStart";
@@ -1027,10 +1042,10 @@
             // 
             // textBoxBonusVipId
             // 
-            this.textBoxBonusVipId.Location = new System.Drawing.Point(57, 10);
+            this.textBoxBonusVipId.Location = new System.Drawing.Point(58, 10);
             this.textBoxBonusVipId.MaxLength = 3;
             this.textBoxBonusVipId.Name = "textBoxBonusVipId";
-            this.textBoxBonusVipId.Size = new System.Drawing.Size(106, 21);
+            this.textBoxBonusVipId.Size = new System.Drawing.Size(71, 21);
             this.textBoxBonusVipId.TabIndex = 6;
             this.textBoxBonusVipId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBonusVipId.TextChanged += new System.EventHandler(this.textBoxBonusVipId_TextChanged);
@@ -1038,7 +1053,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 14);
+            this.label9.Location = new System.Drawing.Point(11, 16);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 0;
@@ -1066,20 +1081,39 @@
             this.panelMembers.Controls.Add(this.label14);
             this.panelMembers.Controls.Add(this.textBoxTotalBonus);
             this.panelMembers.Controls.Add(this.textBoxVip);
-            this.panelMembers.Location = new System.Drawing.Point(570, 86);
+            this.panelMembers.Location = new System.Drawing.Point(639, 86);
             this.panelMembers.Name = "panelMembers";
-            this.panelMembers.Size = new System.Drawing.Size(372, 42);
+            this.panelMembers.Size = new System.Drawing.Size(303, 42);
             this.panelMembers.TabIndex = 29;
             this.panelMembers.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(179, 13);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 12);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "累计记分";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 13);
+            this.label14.Location = new System.Drawing.Point(5, 13);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(53, 12);
             this.label14.TabIndex = 2;
             this.label14.Text = "会员查找";
+            // 
+            // textBoxTotalBonus
+            // 
+            this.textBoxTotalBonus.Location = new System.Drawing.Point(238, 10);
+            this.textBoxTotalBonus.Name = "textBoxTotalBonus";
+            this.textBoxTotalBonus.ReadOnly = true;
+            this.textBoxTotalBonus.Size = new System.Drawing.Size(60, 21);
+            this.textBoxTotalBonus.TabIndex = 7;
+            this.textBoxTotalBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTotalBonus.TextChanged += new System.EventHandler(this.textBoxVip_TextChanged);
             // 
             // dataGridViewGoodsList
             // 
@@ -1096,7 +1130,7 @@
             this.soldCount,
             this.soldBonus,
             this.dataGridViewTextBoxColumn12});
-            this.dataGridViewGoodsList.Location = new System.Drawing.Point(667, 349);
+            this.dataGridViewGoodsList.Location = new System.Drawing.Point(667, 337);
             this.dataGridViewGoodsList.MultiSelect = false;
             this.dataGridViewGoodsList.Name = "dataGridViewGoodsList";
             this.dataGridViewGoodsList.ReadOnly = true;
@@ -1208,9 +1242,9 @@
             this.buttonGoodsPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGoodsPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonGoodsPage.ForeColor = System.Drawing.Color.White;
-            this.buttonGoodsPage.Location = new System.Drawing.Point(403, 88);
+            this.buttonGoodsPage.Location = new System.Drawing.Point(391, 88);
             this.buttonGoodsPage.Name = "buttonGoodsPage";
-            this.buttonGoodsPage.Size = new System.Drawing.Size(120, 35);
+            this.buttonGoodsPage.Size = new System.Drawing.Size(114, 35);
             this.buttonGoodsPage.TabIndex = 4;
             this.buttonGoodsPage.Text = "商品管理";
             this.buttonGoodsPage.UseVisualStyleBackColor = false;
@@ -1223,9 +1257,9 @@
             this.buttonBonusHistoryPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBonusHistoryPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonBonusHistoryPage.ForeColor = System.Drawing.Color.White;
-            this.buttonBonusHistoryPage.Location = new System.Drawing.Point(274, 88);
+            this.buttonBonusHistoryPage.Location = new System.Drawing.Point(266, 88);
             this.buttonBonusHistoryPage.Name = "buttonBonusHistoryPage";
-            this.buttonBonusHistoryPage.Size = new System.Drawing.Size(120, 35);
+            this.buttonBonusHistoryPage.Size = new System.Drawing.Size(114, 35);
             this.buttonBonusHistoryPage.TabIndex = 3;
             this.buttonBonusHistoryPage.Text = "积兑记录";
             this.buttonBonusHistoryPage.UseVisualStyleBackColor = false;
@@ -1238,9 +1272,9 @@
             this.buttonVipPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVipPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonVipPage.ForeColor = System.Drawing.Color.White;
-            this.buttonVipPage.Location = new System.Drawing.Point(144, 88);
+            this.buttonVipPage.Location = new System.Drawing.Point(140, 88);
             this.buttonVipPage.Name = "buttonVipPage";
-            this.buttonVipPage.Size = new System.Drawing.Size(120, 35);
+            this.buttonVipPage.Size = new System.Drawing.Size(114, 35);
             this.buttonVipPage.TabIndex = 2;
             this.buttonVipPage.Text = "会员管理";
             this.buttonVipPage.UseVisualStyleBackColor = false;
@@ -1255,7 +1289,7 @@
             this.buttonMainPage.ForeColor = System.Drawing.Color.White;
             this.buttonMainPage.Location = new System.Drawing.Point(15, 88);
             this.buttonMainPage.Name = "buttonMainPage";
-            this.buttonMainPage.Size = new System.Drawing.Size(120, 35);
+            this.buttonMainPage.Size = new System.Drawing.Size(114, 35);
             this.buttonMainPage.TabIndex = 1;
             this.buttonMainPage.Text = "积分/兑换";
             this.buttonMainPage.UseVisualStyleBackColor = false;
@@ -1282,30 +1316,123 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
-            // textBoxTotalBonus
+            // dataGridViewLog
             // 
-            this.textBoxTotalBonus.Location = new System.Drawing.Point(280, 10);
-            this.textBoxTotalBonus.Name = "textBoxTotalBonus";
-            this.textBoxTotalBonus.ReadOnly = true;
-            this.textBoxTotalBonus.Size = new System.Drawing.Size(82, 21);
-            this.textBoxTotalBonus.TabIndex = 7;
-            this.textBoxTotalBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxTotalBonus.TextChanged += new System.EventHandler(this.textBoxVip_TextChanged);
+            this.dataGridViewLog.AllowUserToAddRows = false;
+            this.dataGridViewLog.AllowUserToDeleteRows = false;
+            this.dataGridViewLog.AllowUserToResizeRows = false;
+            this.dataGridViewLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.logType,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewLog.DefaultCellStyle = dataGridViewCellStyle35;
+            this.dataGridViewLog.Location = new System.Drawing.Point(667, 472);
+            this.dataGridViewLog.MultiSelect = false;
+            this.dataGridViewLog.Name = "dataGridViewLog";
+            this.dataGridViewLog.RowHeadersVisible = false;
+            this.dataGridViewLog.RowTemplate.Height = 23;
+            this.dataGridViewLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewLog.Size = new System.Drawing.Size(276, 79);
+            this.dataGridViewLog.StandardTab = true;
+            this.dataGridViewLog.TabIndex = 11;
+            this.dataGridViewLog.Visible = false;
+            this.dataGridViewLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBonus_CellContentClick);
             // 
-            // label15
+            // buttonLogPage
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(221, 13);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 12);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "累计记分";
+            this.buttonLogPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(144)))), ((int)(((byte)(163)))));
+            this.buttonLogPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLogPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogPage.Font = new System.Drawing.Font("SimSun", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonLogPage.ForeColor = System.Drawing.Color.White;
+            this.buttonLogPage.Location = new System.Drawing.Point(516, 88);
+            this.buttonLogPage.Name = "buttonLogPage";
+            this.buttonLogPage.Size = new System.Drawing.Size(114, 35);
+            this.buttonLogPage.TabIndex = 5;
+            this.buttonLogPage.Text = "操作记录";
+            this.buttonLogPage.UseVisualStyleBackColor = false;
+            this.buttonLogPage.Click += new System.EventHandler(this.buttonLogPage_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle30;
+            this.dataGridViewTextBoxColumn1.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "序号";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "username";
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.Format = "000";
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle31;
+            this.dataGridViewTextBoxColumn2.HeaderText = "用户名";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // logType
+            // 
+            this.logType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.logType.DataPropertyName = "typeName";
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.logType.DefaultCellStyle = dataGridViewCellStyle32;
+            this.logType.FillWeight = 120F;
+            this.logType.HeaderText = "类别";
+            this.logType.MinimumWidth = 10;
+            this.logType.Name = "logType";
+            this.logType.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "desc";
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle33;
+            this.dataGridViewTextBoxColumn9.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "说明";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "createTime";
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.Format = "yyyy-MM-dd HH:mm:ss";
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle34;
+            this.dataGridViewTextBoxColumn10.FillWeight = 160F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "记录时间";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 561);
+            this.Controls.Add(this.buttonLogPage);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.buttonGoodsPage);
             this.Controls.Add(this.buttonBonusHistoryPage);
@@ -1315,6 +1442,7 @@
             this.Controls.Add(this.dataGridViewGoodsList);
             this.Controls.Add(this.dataGridViewMembers);
             this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.dataGridViewLog);
             this.Controls.Add(this.dataGridViewBonus);
             this.Controls.Add(this.pictureBoxMain);
             this.Controls.Add(this.pictureBox1);
@@ -1342,6 +1470,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoodsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1438,6 +1567,13 @@
         private System.Windows.Forms.DataGridViewButtonColumn bonusHistory;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxTotalBonus;
+        private System.Windows.Forms.DataGridView dataGridViewLog;
+        private System.Windows.Forms.Button buttonLogPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
 

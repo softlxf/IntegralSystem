@@ -356,14 +356,32 @@ namespace IntegralSystem
             return dt;
         }
 
-        public bool AddGoods(string name, float price)
+        public int GetMaxGoodsId()
+        {
+            try
+            {
+                SQLiteCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "select max(id) from goods";
+                object result = cmd.ExecuteScalar();
+                cmd.Dispose();
+                return int.Parse(result.ToString());
+            }
+            catch
+            {
+            }
+            return -1;
+        }
+
+        public int AddGoods(string name, float price)
         {
             SQLiteCommand cmd = conn.CreateCommand();
             cmd.CommandText = string.Format("insert into goods(name, price) values(@name, {0})", price);
             cmd.Parameters.AddWithValue("@name", name);
             int result = cmd.ExecuteNonQuery();
             cmd.Dispose();
-            return result == 1;
+            if (result == 1)
+                return GetMaxGoodsId();
+            return -1;
         }
 
         public bool UpdateGoods(int goodsId, string name, float price)
@@ -419,12 +437,12 @@ namespace IntegralSystem
             DateTime endTime = startTime.AddMonths(1).AddDays(1);
             if (vipId == 0)
             {
-                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime,consume from bonus_change where createTime>=datetime('{0}') and createTime<datetime('{1}')"
+                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 2 then '撤销积分（2/4）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 2 then '积分（2/4）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime,consume from bonus_change where createTime>=datetime('{0}') and createTime<datetime('{1}')"
                     , startTime.ToString("yyyy-MM-dd HH:mm:ss"), endTime.ToString("yyyy-MM-dd HH:mm:ss"));
             }
             else
             {
-                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime,consume from bonus_change where vipId={0} and createTime>=datetime('{1}') and createTime<datetime('{2}')"
+                cmd.CommandText = string.Format("select id,vipId,type,status,case status when 2 then (case type when 0 then '撤销积分（1/2）' when 1 then '撤销积分（5/0）' when 2 then '撤销积分（2/4）' when 11 then '撤销兑换' else '撤销' end) else (case type when 0 then '积分（1/2）' when 1 then '积分（5/0）' when 2 then '积分（2/4）' when 11 then '兑换' else '' end) end as typeText,startTime,endTime,duration,changeBonus,currBonus,desc,createTime,consume from bonus_change where vipId={0} and createTime>=datetime('{1}') and createTime<datetime('{2}')"
                     , vipId, startTime.ToString("yyyy-MM-dd HH:mm:ss"), endTime.ToString("yyyy-MM-dd HH:mm:ss"));
             }
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
@@ -756,6 +774,63 @@ namespace IntegralSystem
             {
                 cmd.Dispose();
             }
+        }
+
+        public DataTable GetLog(DateTime startTime)
+        {
+            SQLiteCommand cmd = conn.CreateCommand();
+            if ((DateTime.Now - startTime).TotalMinutes <= 1)
+                startTime = DateTime.Now.AddMonths(-1);
+            DateTime endTime = startTime.AddMonths(1).AddDays(1);
+            cmd.CommandText = string.Format("select id,username,type,desc,createTime from user_log where createTime>=datetime('{0}') and createTime<datetime('{1}')"
+                , startTime.ToString("yyyy-MM-dd HH:mm:ss"), endTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.Dispose();
+            DataTable all = dt.Copy();
+            all.Columns.Add("typeName", typeof(string));
+            foreach (DataRow row in all.Rows)
+            {
+                string typeName = "Unknown";
+                LogType logType = (LogType)(long)row["type"];
+                switch (logType)
+                {
+                    case LogType.Login:
+                        typeName = "登录成功";
+                        break;
+                    case LogType.LoginError:
+                        typeName = "登录失败";
+                        break;
+                    case LogType.BackupDatabase:
+                        typeName = "备份数据";
+                        break;
+                    case LogType.UserUpdate:
+                        typeName = "更改用户";
+                        break;
+                    case LogType.GoodsNew:
+                        typeName = "新增商品";
+                        break;
+                    case LogType.GoodsUpdate:
+                        typeName = "更改商品";
+                        break;
+                    case LogType.GoodsDelete:
+                        typeName = "删除商品";
+                        break;
+                    case LogType.MemberNew:
+                        typeName = "注册会员";
+                        break;
+                    case LogType.MemberUpdate:
+                        typeName = "更改会员";
+                        break;
+                    case LogType.MemberDelete:
+                        typeName = "删除会员";
+                        break;
+                }
+                row["typeName"] = typeName;
+            }
+            all.Columns.Remove("type");
+            return all;
         }
     }
 }

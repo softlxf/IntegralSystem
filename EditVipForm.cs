@@ -68,7 +68,7 @@ namespace IntegralSystem
                 MessageBox.Show("更改会员信息失败，可能已存在相同名称和电话号码的会员", "会员信息修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DbHelper.Instance.InsertLog(DbHelper.LogType.MemberUpdate, string.Format("更改会员信息：{0},{1},{2}", vipId, vipName, vipTel));
+            DbHelper.Instance.InsertLog(DbHelper.LogType.MemberUpdate, string.Format("更改会员：{0},{1},{2}", vipId, vipName, vipTel));
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -111,7 +111,7 @@ namespace IntegralSystem
                 MessageBox.Show("注册会员失败，可能已存在相同名称和电话号码的会员", "会员注册", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DbHelper.Instance.InsertLog(DbHelper.LogType.MemberNew, string.Format("注册会员信息：{0},{1},{2}", vipId, vipName, vipTel));
+            DbHelper.Instance.InsertLog(DbHelper.LogType.MemberNew, string.Format("注册会员：{0},{1},{2}", vipId, vipName, vipTel));
             DialogResult = DialogResult.OK;
             Close();
         }
